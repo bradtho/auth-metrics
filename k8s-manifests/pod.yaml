@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-metrics-app
+  labels:
+    app: auth-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-metrics
+  template:
+    metadata:
+      labels:
+        app: auth-metrics
+    spec:
+      containers:
+        - name: auth-metrics-app
+          image: bradtho/auth-metrics-app:latest   # <-- replace with your image
+          ports:
+            - containerPort: 8080
